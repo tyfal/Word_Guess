@@ -28,7 +28,8 @@
     width: 150px;
     position: fixed;
     border-radius:100px;
-    /* border: 1px solid silver; */
+    top: -150px;
+    left: -150px;
 }
 
 a {
