@@ -66,7 +66,9 @@ class word {
 }
 
 function game() {
-    var guessMe = new word("blah");
+    var wordList = ["blah", "red", "space", "super", "alien", "doctor"]
+    var randomWord = word[Math.floor(Math.random() * wordList.length)];
+    var guessMe = new word(randomWord);
     guessMe.docProgress();
     guessMe.docBadGuesses();
     document.getElementById("instruction").innerHTML = "Key your guesses at will, but be wise...";
