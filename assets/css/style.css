@@ -27,9 +27,11 @@
     height: 150px;
     width: 150px;
     position: fixed;
-    border-radius:100px;
+    border-radius: 0 200px 200px 200px;
     top: -150px;
     left: -150px;
+    background-color: rgba(255, 0, 0, .5);
+    box-shadow: 5px 5px 5px 0 rgba(252, 217, 77, 0.75), 0 5px 5px 0 rgba(252, 217, 77, 0.75);
 }
 
 a {

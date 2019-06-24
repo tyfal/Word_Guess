@@ -1,4 +1,7 @@
 
+var won = 0;
+var lost = 0;
+
 class word {
 
     constructor(val) {
@@ -10,11 +13,12 @@ class word {
     }
 
     docProgress() {
-        document.getElementById("progress").innerHTML = this.progress;
+        document.getElementById("progress").innerHTML = this.progress.join(" ");
     }
 
     docBadGuesses() {
-        document.getElementById("badGuesses").innerHTML = this.badGuesses;
+        document.getElementById("badGuesses").innerHTML = this.badGuesses.join(", ");
+        document.getElementById("guessesLeft").innerHTML = "You have " + (10 - this.wrongCount) + " guesses left";
     }
 
     moveAsteroid() {
@@ -27,13 +31,13 @@ class word {
                 clearInterval(interval);
                 pos = 0;
                 xPos = 0;
-                document.getElementById("spaceship").style = "background-color: #132538; box-shadow: 0;";
+                // document.getElementById("spaceship").style = "background-color: #132538; box-shadow: 0;";
             } else {
                 pos++;
-                xPos+=5;
+                xPos += 5;
                 asteroid.style.top = pos + 'px';
                 asteroid.style.left = xPos + 'px';
-                document.getElementById("spaceship").style = "background-color: red; box-shadow: 0 5px 5px 0 red, 0 5px 5px 0 red;";
+                // document.getElementById("spaceship").style = "background-color: red; box-shadow: 0 5px 5px 0 red, 0 5px 5px 0 red;";
             }
         }
     }
@@ -72,18 +76,25 @@ function game() {
     guessMe.docProgress();
     guessMe.docBadGuesses();
     document.getElementById("instruction").innerHTML = "Key your guesses at will, but be wise...";
+    document.getElementById("guessesLeft").innerHTML = "You have " + (10 - guessMe.wrongCount) + " guesses left";
+    document.getElementById("gamesWon").innerHTML = "Games won: " + won;
+    document.getElementById("gamesLost").innerHTML = "Games lost: " + lost;
     document.onkeyup = function (event) {
         var letter = event.key;
         guessMe.guessLetter(letter.toLowerCase());
         if (guessMe.progress.indexOf("_") === -1) {
+            won ++;
             document.getElementById("instruction").innerHTML = "You Won!!!";
             if (confirm("You won!!!\nWould you like to try again?")) {
+                document.getElementById("gamesWon").innerHTML = "Games won: " + won;
                 game();
             }
         }
         if (guessMe.wrongCount === 10) {
+            lost ++;
             document.getElementById("instruction").innerHTML = "You Lost :'(";
             if (confirm("You Lost :'(\nTry again?")) {
+                document.getElementById("gamesLost").innerHTML = "Games lost: " + lost;
                 game();
             }
         }
