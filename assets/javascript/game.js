@@ -67,7 +67,7 @@ class word {
 
 function game() {
     var wordList = ["blah", "red", "space", "super", "alien", "doctor"];
-    var randomWord = word[Math.floor(Math.random() * wordList.length)];
+    var randomWord = wordList[Math.floor(Math.random() * wordList.length)];
     var guessMe = new word(randomWord);
     guessMe.docProgress();
     guessMe.docBadGuesses();
