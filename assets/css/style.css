@@ -10,7 +10,7 @@
 }
 
 .grid-item {
-    border: 1px solid grey;
+    /* border: 1px solid grey; */
     text-align: center;
     height: 33vh;
     width: 33vw;
@@ -19,11 +19,16 @@
 #spaceship {
     height: 250px;
     width: 200px;
+    border-radius: 100px;
+    z-index: 500;
 }
 
 #asteroid {
     height: 150px;
     width: 150px;
+    position: fixed;
+    border-radius:100px;
+    /* border: 1px solid silver; */
 }
 
 a {

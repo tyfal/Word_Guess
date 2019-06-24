@@ -15,16 +15,25 @@ class word {
 
     docBadGuesses() {
         document.getElementById("badGuesses").innerHTML = this.badGuesses;
+    }
+
+    moveAsteroid() {
         var asteroid = document.getElementById("asteroid")
         var pos = 0;
-        var interval = setInterval(frame, 10);
+        var xPos = 0
+        var interval = setInterval(frame, 5);
         function frame() {
-            if (pos == 350) {
+            if (pos == 300) {
                 clearInterval(interval);
+                pos = 0;
+                xPos = 0;
+                document.getElementById("spaceship").style = "background-color: #132538; box-shadow: 0;";
             } else {
                 pos++;
+                xPos+=5;
                 asteroid.style.top = pos + 'px';
-                asteroid.style.left = pos + 'px';
+                asteroid.style.left = xPos + 'px';
+                document.getElementById("spaceship").style = "background-color: red; box-shadow: 0 5px 5px 0 red, 0 5px 5px 0 red;";
             }
         }
     }
@@ -50,7 +59,7 @@ class word {
                 this.badGuesses.push(letter);
                 this.wrongCount++;
                 this.docBadGuesses();
-
+                this.moveAsteroid();
             }
         }
     }
