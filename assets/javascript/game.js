@@ -34,16 +34,10 @@ class word {
             }
             if (match) {
                 this.docProgress();
-                if (this.progress.indexOf("_") === -1) {
-                    document.getElementById("instruction").innerHTML = "You Won!!!";
-                }
             } else {
                 this.badGuesses.push(letter);
                 this.wrongCount++;
                 this.docBadGuesses();
-                if (this.wrongCount === 10) {
-                    document.getElementById("instruction").innerHTML = "You Lost :'(";
-                }
             }
         }
     }
@@ -57,5 +51,17 @@ function game() {
     document.onkeyup = function (event) {
         var letter = event.key;
         guessMe.guessLetter(letter.toLowerCase());
+        if (guessMe.progress.indexOf("_") === -1) {
+            document.getElementById("instruction").innerHTML = "You Won!!!";
+            if (confirm("You won!!!\nWould you like to try again?")) {
+                game();
+            }
+        }
+        if (guessMe.wrongCount === 10) {
+            document.getElementById("instruction").innerHTML = "You Lost :'(";
+            if (confirm("You Lost :'(\nTry again?")) {
+                game();
+            }
+        }
     }
 }
