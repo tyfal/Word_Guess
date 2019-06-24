@@ -1,24 +1,46 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Word Guess Game!</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://fonts.googleapis.com/css?family=Space+Mono&display=swap" rel="stylesheet">
     <link rel='stylesheet' type='text/css' media='screen' href='assets/css/style.css'>
     <script src='assets/javascript/game.js'></script>
+    <a href="https://pngtree.com/">Graphics from pngtree.com</a>
+    <a href="https://pngtree.com/free-vectors">free vectors from pngtree.com</a>
 </head>
-<body>
 
-    <h1>Hang Man Game!</h1>
-    <br>
-    <h3 id="instruction">Key your guesses at will, but be wise...</h3>
-    <br>
-    <p id="progress"></p>
-    <br>
-    <p id="badGuesses"></p>
-    <br>
-    <button onclick="game()">START GAME</button>
-    
+<body>
+    <div class="grid-container">
+        <div class="grid-item">
+            <img id="asteroid" src="assets/images/asteroid.png" alt="asteroid">
+        </div>
+        <div class="grid-item">
+            <h1>Hang Man Game!</h1>
+            <br>
+            <h3 id="instruction">Key your guesses at will, but be wise...</h3>
+            <br>
+        </div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item">
+            <img id="spaceship" src="assets/images/spaceship.png" alt="spaceship">
+        </div>
+        <div class="grid-item"></div>
+        <div class="grid-item"></div>
+        <div class="grid-item">
+            <p id="progress"></p>
+            <br>
+            <p id="badGuesses"></p>
+            <br>
+            <button onclick="game()">START GAME</button>
+        </div>
+        <div class="grid-item"></div>
+    </div>
+
 </body>
+
 </html>

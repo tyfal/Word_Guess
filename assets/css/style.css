@@ -1,0 +1,31 @@
+* {
+    font-family: 'Space Mono', monospace;
+    color: silver;
+    background-color: #132538;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 33vw 33vw 33vw;
+}
+
+.grid-item {
+    border: 1px solid grey;
+    text-align: center;
+    height: 33vh;
+    width: 33vw;
+}
+
+#spaceship {
+    height: 250px;
+    width: 200px;
+}
+
+#asteroid {
+    height: 150px;
+    width: 150px;
+}
+
+a {
+    display: none;
+}

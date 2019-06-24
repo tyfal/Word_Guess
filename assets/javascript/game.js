@@ -15,6 +15,18 @@ class word {
 
     docBadGuesses() {
         document.getElementById("badGuesses").innerHTML = this.badGuesses;
+        var asteroid = document.getElementById("asteroid")
+        var pos = 0;
+        var interval = setInterval(frame, 10);
+        function frame() {
+            if (pos == 350) {
+                clearInterval(interval);
+            } else {
+                pos++;
+                asteroid.style.top = pos + 'px';
+                asteroid.style.left = pos + 'px';
+            }
+        }
     }
 
     isLetter(val) {
@@ -38,6 +50,7 @@ class word {
                 this.badGuesses.push(letter);
                 this.wrongCount++;
                 this.docBadGuesses();
+
             }
         }
     }
