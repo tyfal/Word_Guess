@@ -26,14 +26,14 @@ class word {
         var asteroid = document.getElementById("asteroid");
         var pos = 0;
         var xPos = 0
-        var interval = setInterval(frame, 5);
+        var interval = setInterval(frame, 4);
         function frame() {
-            if (pos == 300) {
+            if (pos == 600) {
                 clearInterval(interval);
                 pos = 0;
                 xPos = 0;
             } else {
-                pos++;
+                pos+=2;
                 xPos += 5;
                 asteroid.style.top = pos + 'px';
                 asteroid.style.left = xPos + 'px';
@@ -67,7 +67,7 @@ class word {
                 this.docBadGuesses();
                 setTimeout(function() {
                     keyInput = true;
-                }, 1500);
+                }, 1200);
             }
         }
     }
