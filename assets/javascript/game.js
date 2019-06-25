@@ -1,6 +1,7 @@
 
 var won = 0;
 var lost = 0;
+var keyInput = true;
 
 class word {
 
@@ -46,6 +47,7 @@ class word {
     }
 
     guessLetter(letter) {
+        keyInput = false;
         if (this.isLetter(letter) && letter.length === 1) {
             var guess = letter.toLowerCase();
             var match = false;
@@ -57,11 +59,15 @@ class word {
             }
             if (match) {
                 this.docProgress();
+                keyInput = true;
             } else {
                 this.badGuesses.push(letter);
                 this.wrongCount++;
-                this.docBadGuesses();
                 this.moveAsteroid();
+                this.docBadGuesses();
+                setTimeout(function() {
+                    keyInput = true;
+                }, 1500);
             }
         }
     }
@@ -78,22 +84,24 @@ function game() {
     document.getElementById("gamesWon").innerHTML = "Games won: " + won;
     document.getElementById("gamesLost").innerHTML = "Games lost: " + lost;
     document.onkeyup = function (event) {
-        var letter = event.key;
-        guessMe.guessLetter(letter.toLowerCase());
-        if (guessMe.progress.indexOf("_") === -1) {
-            won ++;
-            document.getElementById("instruction").innerHTML = "You Won!!!";
-            document.getElementById("gamesWon").innerHTML = "Games won: " + won;
-            if (confirm("You won!!!\nGreat job guessing \""+guessMe.name+"\".\nWould you like to try again?")) {
-                game();
+        if (keyInput) {
+            var letter = event.key;
+            guessMe.guessLetter(letter.toLowerCase());
+            if (guessMe.progress.indexOf("_") === -1) {
+                won ++;
+                document.getElementById("instruction").innerHTML = "You Won!!!";
+                document.getElementById("gamesWon").innerHTML = "Games won: " + won;
+                if (confirm("You won!!!\nGreat job guessing \""+guessMe.name+"\".\nWould you like to try again?")) {
+                    game();
+                }
             }
-        }
-        if (guessMe.wrongCount === 10) {
-            lost ++;
-            document.getElementById("instruction").innerHTML = "You Lost :'(";
-            if (confirm("You Lost :'(\nYou failed to guess \""+guessMe.name+"\".\nTry again?")) {
-                document.getElementById("gamesLost").innerHTML = "Games lost: " + lost;
-                game();
+            if (guessMe.wrongCount === 10) {
+                lost ++;
+                document.getElementById("instruction").innerHTML = "You Lost :'(";
+                if (confirm("You Lost :'(\nYou failed to guess \""+guessMe.name+"\".\nTry again?")) {
+                    document.getElementById("gamesLost").innerHTML = "Games lost: " + lost;
+                    game();
+                }
             }
         }
     }
