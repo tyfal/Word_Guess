@@ -22,7 +22,7 @@ class word {
     }
 
     moveAsteroid() {
-        var asteroid = document.getElementById("asteroid")
+        var asteroid = document.getElementById("asteroid");
         var pos = 0;
         var xPos = 0
         var interval = setInterval(frame, 5);
@@ -83,15 +83,15 @@ function game() {
         if (guessMe.progress.indexOf("_") === -1) {
             won ++;
             document.getElementById("instruction").innerHTML = "You Won!!!";
-            if (confirm("You won!!!\nWould you like to try again?")) {
-                document.getElementById("gamesWon").innerHTML = "Games won: " + won;
+            document.getElementById("gamesWon").innerHTML = "Games won: " + won;
+            if (confirm("You won!!!\nGreat job guessing \""+guessMe.name+"\".\nWould you like to try again?")) {
                 game();
             }
         }
         if (guessMe.wrongCount === 10) {
             lost ++;
             document.getElementById("instruction").innerHTML = "You Lost :'(";
-            if (confirm("You Lost :'(\nTry again?")) {
+            if (confirm("You Lost :'(\nYou failed to guess \""+guessMe.name+"\".\nTry again?")) {
                 document.getElementById("gamesLost").innerHTML = "Games lost: " + lost;
                 game();
             }
